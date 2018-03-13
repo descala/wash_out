@@ -22,7 +22,7 @@ module WashOutHelper
       end
     end
   end
-  
+ 
   def wsdl_type(xml, param, defined=[])
     more = []
     if param.struct?
@@ -36,7 +36,7 @@ module WashOutHelper
             else
               elems << value
             end
-          end 
+          end
           if elems.any?
             xml.tag! "xsd:sequence" do
               elems.each do |value|
@@ -61,7 +61,7 @@ module WashOutHelper
     end
   end
 
-   def wsdl_occurence(param, inject, extend_with = {})
+  def wsdl_occurence(param, inject, extend_with = {})
     if (param.multiplied && param.optional)
        data = {
         "#{'xsi:' if inject}minOccurs" => 0,
@@ -87,7 +87,6 @@ module WashOutHelper
   end
 
   def wsdl_data(xml, params)
-    Rails.logger.debug params 
     params.each do |param|
       tag_name = param.name
 
